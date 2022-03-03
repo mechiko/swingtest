@@ -46,7 +46,7 @@ public class Test {
             ResultSet rs;
             rs = stmt.executeQuery("SELECT Item, Price FROM Items");
             JTable table = new JTable(buildTableModel(rs));
-            JDialog d = new JDialog(frame, "dialog Box");
+            JDialog d = new JDialog(frame, "Подключение");
             JPanel p = new JPanel();
             JLabel l = new JLabel("SQL подключено");
             p.add(l);
@@ -61,7 +61,7 @@ public class Test {
             JLabel l = new JLabel(e.getMessage());
             perr.add(l);
             derr.add(perr);
-            derr.setSize(600, 70);
+            derr.setSize(800, 70);
             derr.setVisible(true);
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
@@ -70,9 +70,9 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        JFrame f=new JFrame();//creating instance of JFrame
+        JFrame f=new JFrame("Test");//creating instance of JFrame
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        final JButton clickMeButton = new JButton("Click Me!");
+        final JButton clickMeButton = new JButton("Подключиться к SQL");
         clickMeButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {

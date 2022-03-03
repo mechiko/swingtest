@@ -3,6 +3,8 @@ node_modules
 /dist
 /test
 /out
+gitinit.*
+gitpush.*
 
 # local env files
 .env.local

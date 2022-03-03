@@ -40,20 +40,8 @@ public class Test {
 
     public static void query1 (String urlConn, JFrame frame) {
         try {
-//            testing connection string
-//            String url = "jdbc:msql://200.210.220.1:1114/Demo";
-//            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-//            String connectionUrl =
-//                    "jdbc:sqlserver://SYSOPER\\SQLEXPRESS;databaseName=test;";
-//            String connectionUrl = "jdbc:sqlserver://127.0.0.1:1433;databaseName=test;encrypt=true; trustServerCertificate=false;";
-
-//            String connectionUrl = "jdbc:jtds:sqlserver://127.0.0.1:1433/test;instance=SQLEXPRESS;integratedSecurity=true;";
+//            String connectionUrl = "jdbc:sqlserver://127.0.0.1:1433;databaseName=test;authenticationScheme=NativeAuthentication;encrypt=true;encrypt=true;trustServerCertificate=true;user=sysoper;password=123456;";
             Connection conn = DriverManager.getConnection(urlConn);
-//            if (d == null) {
-//                System.err.println("d is null");
-//            } else {
-//                System.err.println("d not null");
-//            }
             Statement stmt = conn.createStatement();
             ResultSet rs;
             rs = stmt.executeQuery("SELECT Item, Price FROM Items");
@@ -73,7 +61,7 @@ public class Test {
             JLabel l = new JLabel(e.getMessage());
             perr.add(l);
             derr.add(perr);
-            derr.setSize(500, 70);
+            derr.setSize(600, 70);
             derr.setVisible(true);
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
@@ -83,10 +71,7 @@ public class Test {
 
     public static void main(String[] args) {
         JFrame f=new JFrame();//creating instance of JFrame
-        // Release the window and quit the application when it has been closed
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        // Creating a button and setting its action
         final JButton clickMeButton = new JButton("Click Me!");
         clickMeButton.addActionListener(new ActionListener() {
 
@@ -94,15 +79,13 @@ public class Test {
                 String name1 = (String) JOptionPane.showInputDialog(f,
                         "Edit Connection String",
                         "Server Connection\n", JOptionPane.OK_CANCEL_OPTION, null,
-                        null, "jdbc:jtds:sqlserver://127.0.0.1:1433/test;instance=SQLEXPRESS;integratedSecurity=true;");
-//                query1("jdbc:jtds:sqlserver://127.0.0.1:1433/test;instance=SQLEXPRESS;integratedSecurity=true;", f);
+                        null, "jdbc:sqlserver://127.0.0.1:1433;databaseName=test;authenticationScheme=NativeAuthentication;encrypt=true;encrypt=true;trustServerCertificate=true;user=sysoper;password=123456;");
                 query1(name1, f);
             }
         });
         // Add the button to the window and resize it to fit the button
         f.getContentPane().add(clickMeButton);
         f.pack();
-
         f.setSize(400,500);//400 width and 500 height
         f.setLayout(null);//using no layout managers
         f.setVisible(true);//making the frame visible
